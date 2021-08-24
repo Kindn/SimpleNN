@@ -64,7 +64,7 @@ examples/mnist/recognition <image_path>
 
 效果：
 
-![result](/home/lpy/SimpleNN/examples/mnist/imgs/img_6_result.jpeg)
+![result](./examples/mnist/imgs/img_6_result.jpeg)
 
 若目标数字是黑底白字，则输入
 
