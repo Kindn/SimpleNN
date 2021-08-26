@@ -2,8 +2,6 @@
 
 SimpleNN is a simple neural network framework written in C++.It can help to learn how neural networks work.
 
-I'm a pure freshman in DL,I wrote this framework just for fun (learning C++ programing and DL) so we cannot compare it with Caffe, PyTorch and so on.
-
 ## Features
 
 * Construct neural networks.
