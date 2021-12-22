@@ -26,9 +26,9 @@ def load_mnist(path, kind='train'):
 
 if __name__ == "__main__":
     print(os.getcwd())
-    images_train, labels_train = load_mnist("/home/lpy/SimpleNN/experiments/mnist/dataset", 
+    images_train, labels_train = load_mnist(".", 
                                             kind='train')
-    images_test, labels_test = load_mnist("/home/lpy/SimpleNN/experiments/mnist/dataset", 
+    images_test, labels_test = load_mnist(".", 
                                             kind='t10k')
     #print(images.shape)
     #print(labels.shape)
@@ -40,12 +40,12 @@ if __name__ == "__main__":
     print(labels_train.shape)
     print(labels_test.shape)
 
-    np.savetxt("/home/lpy/SimpleNN/experiments/mnist/dataset/images_train.csv", 
+    np.savetxt("./images_train.csv", 
                 images_train, "%f")
-    np.savetxt("/home/lpy/SimpleNN/experiments/mnist/dataset/labels_train.csv", 
+    np.savetxt("./labels_train.csv", 
                 labels_train, "%d")
-    np.savetxt("/home/lpy/SimpleNN/experiments/mnist/dataset/images_test.csv", 
+    np.savetxt("./images_test.csv", 
                 images_test, "%f")
-    np.savetxt("/home/lpy/SimpleNN/experiments/mnist/dataset/labels_test.csv", 
+    np.savetxt("./labels_test.csv", 
                 labels_test, "%d")
 

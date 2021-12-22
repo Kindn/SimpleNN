@@ -139,6 +139,8 @@ std::ostream& operator << (std::ostream& out, const Matrix<Type>& mat)
     for (int i = 0; i < 2 * mat.theCols; i++)
         out << "-";
     out << std::endl;
+
+    return out;
 }
 
 template<class Type>
@@ -266,6 +268,8 @@ Matrix<Type> Matrix<Type>::operator - () const
     {
         result.data[i] = -this->data[i];
     }
+
+    return result;
 }
 
 template<class Type>

@@ -70,7 +70,14 @@ examples/mnist/recognition <image_path>
 examples/mnist/recognition <image_path> --reverse
 ```
 
-在mnist目录下已有训练好的LeNet权重参数。若要运行examples/mnist/train，需要先在examples/mnist/dataset目录下运行```generate_csv.py```来生成数据集的csv文件（这个文件有400多M属于大文件试了好多种都push不上来QAQ）。
+在mnist目录下已有训练好的LeNet权重参数。若要运行examples/mnist/mnist_train，需要先在examples/mnist/dataset目录下运行```generate_csv.py```来生成数据集的csv文件（这个文件有400多M属于大文件试了好多种都push不上来QAQ）。
+
+```shell
+cd path/to/SimpleNN/build/examples/mnist
+./mnist_train
+```
+
+
 
 注：本例依赖OpenCV3，如果要运行须事先安装，不然不会编译本例。
 
