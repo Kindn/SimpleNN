@@ -475,6 +475,7 @@ namespace snn
                         std::ios::in | std::ios::binary);
         if (ifs.fail())
         {
+            std::cerr << "Failed to open weight file " << _weight_file_path << std::endl;
             ifs.close();
             return false;
         }
@@ -505,6 +506,7 @@ namespace snn
                 }
                 else
                 {
+                    std::cerr << "Input file stream not good." << std::endl;
                     ifs.close();
                     return false;
                 }
