@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-const std::string weight_path = "../../../examples/mnist/LeNet.weights";
+std::string weight_path = "/home/lpy/SimpleNN/examples/mnist/LeNet.weights";
 snn::LeNet net;
 
 cv::Mat element = cv::getStructuringElement(0, cv::Size(3, 3));
@@ -90,13 +90,6 @@ void recognize(cv::Mat& _src_gray,
 
 int main(int argc, char **argv)
 {
-    if (!net.load_weights(weight_path))
-    {
-        std::cerr << "Failed to load weights!" << std::endl;
-        return -1;
-    
-    }
-
     if (argc <= 1)
     {
         std::cout << "Please specify an image file path!" << std::endl;
@@ -110,8 +103,25 @@ int main(int argc, char **argv)
         {
             std::string argname(argv[2]);
             if (argname == "--reverse")
+            {
                 reverse_flag = true;
+                if (argc >= 4)
+                {
+                    weight_path = argv[3];
+                }
+            }
+            else
+            {
+                weight_path = argv[2];
+            }
         }
+        if (!net.load_weights(weight_path))
+        {
+            std::cerr << "Failed to load weights!" << std::endl;
+            return -1;
+        
+        }
+
         cv::Mat frame;
 
         frame = cv::imread(path);
