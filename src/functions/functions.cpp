@@ -27,7 +27,7 @@ namespace snn
             return std::max(scalar / a, scalar);
     }
 
-    Matrix_d sigmoid(Matrix_d& input)
+    Matrix_d sigmoid(const Matrix_d& input)
     {
         int rows = input.rows(), cols = input.cols();
         Matrix_d output(rows, cols);
@@ -38,7 +38,7 @@ namespace snn
         return output;
     }
 
-    Matrix_d relu(Matrix_d& input)
+    Matrix_d relu(const Matrix_d& input)
     {
         int rows = input.rows(), cols = input.cols();
         Matrix_d output(rows, cols);
@@ -49,7 +49,7 @@ namespace snn
         return output;
     }
 
-    Matrix_d leaky_relu(Matrix_d& input, double a)
+    Matrix_d leaky_relu(const Matrix_d& input, double a)
     {
         if (a <= 1)
             throw illegalParameterValue("a should be larger than 1!");
@@ -65,7 +65,7 @@ namespace snn
         }
     }
 
-    Matrix_d softmax(Matrix_d& input, int axis)
+    Matrix_d softmax(const Matrix_d& input, int axis)
     {
         int rows = input.rows(), cols = input.cols();
         if (axis != 0 && axis != 1 && axis != 2)
@@ -131,7 +131,7 @@ namespace snn
         }
     }
 
-    double meanSquaredLoss(Matrix_d& y, Matrix_d& t)
+    double meanSquaredLoss(const Matrix_d& y, const Matrix_d& t)
     {
         if (y.rows() != t.rows() || y.cols() != t.cols())
             throw illegalParameterValue("Size of y should match size of t!");
@@ -149,7 +149,7 @@ namespace snn
         
     }
 
-    double crossEntropyLoss(Matrix_d& y, Matrix_d& t)
+    double crossEntropyLoss(const Matrix_d& y, const Matrix_d& t)
     {
         if (y.rows() != t.rows() || y.cols() != t.cols())
             throw illegalParameterValue("Size of y should match size of t!");
@@ -217,7 +217,7 @@ namespace snn
         }
     }
 
-    Matrix_d im2col(Matrix_d& src, int _img_rows, int _img_cols,
+    Matrix_d im2col(const Matrix_d& src, int _img_rows, int _img_cols,
                                         int _ker_rows, int _ker_cols, 
                                         int _channels, 
                                         int _row_strides, int _col_strides, 
@@ -270,7 +270,7 @@ namespace snn
         return result;
     }
 
-    Matrix_d col2im(Matrix_d& src, int _img_rows, int _img_cols,
+    Matrix_d col2im(const Matrix_d& src, int _img_rows, int _img_cols,
                                         int _ker_rows, int _ker_cols, int _channels, 
                                         int _row_strides, int _col_strides, 
                                         int _row_pads, int _col_pads)
@@ -317,7 +317,7 @@ namespace snn
         return result;
     }
 
-    Matrix_d col2im_add(Matrix_d& src, int _img_rows, int _img_cols,
+    Matrix_d col2im_add(const Matrix_d& src, int _img_rows, int _img_cols,
                                         int _ker_rows, int _ker_cols, int _channels, 
                                         int _row_strides, int _col_strides, 
                                         int _row_pads, int _col_pads)

@@ -51,12 +51,12 @@ namespace snn
         
     }
 
-    bool MaxPooling::set_properties(LayerParams& _layer_params)
+    bool MaxPooling::set_properties(const LayerParams& _layer_params)
     {
         if (_layer_params.size() <= 0)
             return true;
 
-        for (LayerParams::iterator iter = _layer_params.begin(); 
+        for (LayerParams::const_iterator iter = _layer_params.begin(); 
             iter != _layer_params.end(); iter++)
         {
             auto key = iter->first;
@@ -162,19 +162,20 @@ namespace snn
         }
     }
 
-    void MaxPooling::backward(Matrix_d& dout)
+    void MaxPooling::backward(const Matrix_d& dout)
     {
+        Matrix_d actual_dout = dout;
         if (output_flatten_flag)
-            dout = dout.transpose().reshape(dout.cols() * image_channels, 
+            actual_dout = dout.transpose().reshape(dout.cols() * image_channels, 
                                             dout.rows() / image_channels).transpose();
         Matrix_d din_i2c(input2col.rows(), input2col.cols());
-        for (int i = 0; i < dout.rows(); i++)
+        for (int i = 0; i < actual_dout.rows(); i++)
         {
-            for (int j = 0; j < dout.cols(); j++)
+            for (int j = 0; j < actual_dout.cols(); j++)
             {
-                int row_in_i2c = i + dout.rows() * j;
+                int row_in_i2c = i + actual_dout.rows() * j;
                 int col_in_i2c = max_cols[row_in_i2c];
-                din_i2c(row_in_i2c, col_in_i2c) = dout(i, j);
+                din_i2c(row_in_i2c, col_in_i2c) = actual_dout(i, j);
             }
         }
         din = col2im_add(din_i2c, 

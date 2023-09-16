@@ -53,11 +53,11 @@ namespace snn
             virtual void get_params_ptr(std::vector<Matrix_d*>& _params, 
                                         std::vector<Matrix_d*>& _grads) override;
 
-            virtual bool set_properties(LayerParams& _layer_params)  override;
+            virtual bool set_properties(const LayerParams& _layer_params)  override;
             virtual bool get_properties(LayerParams& _layer_params, 
                                         std::string& _layer_type_got)  override;
             virtual void forward()  override;
-            virtual void backward(Matrix_d& dout)  override;
+            virtual void backward(const Matrix_d& dout)  override;
 
         private:
             Matrix_d input2col;
@@ -66,7 +66,7 @@ namespace snn
 
 
             Matrix_d conv_output_transform();
-            Matrix_d dout_inverse_transform(Matrix_d& dout);
+            Matrix_d dout_inverse_transform(const Matrix_d& dout);
     };
 }
 

@@ -44,13 +44,13 @@ namespace snn
                 return output_data;
             }
 
-            virtual bool set_properties(LayerParams& _layer_params) = 0;
+            virtual bool set_properties(const LayerParams& _layer_params) = 0;
             virtual bool get_properties(LayerParams& _layer_params, 
                                         std::string& _layer_type_got) = 0;
             virtual void get_params_ptr(std::vector<Matrix_d*>& _params, std::vector<Matrix_d*>& _grads) = 0;
 
             virtual void forward() = 0;
-            virtual void backward(Matrix_d& dout) = 0;
+            virtual void backward(const Matrix_d& dout) = 0;
 
     };
 

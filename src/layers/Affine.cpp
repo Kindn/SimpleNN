@@ -64,12 +64,12 @@ namespace snn
         _grads.push_back(&dBias);
     }
 
-    bool Affine::set_properties(LayerParams& _layer_params)
+    bool Affine::set_properties(const LayerParams& _layer_params)
     {
         if (_layer_params.size() <= 0)
             return true;
 
-        for (LayerParams::iterator iter = _layer_params.begin(); 
+        for (LayerParams::const_iterator iter = _layer_params.begin(); 
             iter != _layer_params.end(); iter++)
         {
             auto key = iter->first;
@@ -138,7 +138,7 @@ namespace snn
         }
     }
 
-    void Affine::backward(Matrix_d& dout)
+    void Affine::backward(const Matrix_d& dout)
     {
         din = weights.transpose() * dout;
         dWeights = dout * input_data.transpose();

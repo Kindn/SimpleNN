@@ -85,12 +85,12 @@ namespace snn
         _grads.push_back(&dBias);
     }
 
-    bool Convolution::set_properties(LayerParams& _layer_params)
+    bool Convolution::set_properties(const LayerParams& _layer_params)
     {
         if (_layer_params.size() <= 0)
             return true;
 
-        for (LayerParams::iterator iter = _layer_params.begin(); 
+        for (LayerParams::const_iterator iter = _layer_params.begin(); 
             iter != _layer_params.end(); iter++)
         {
             auto key = iter->first;
@@ -208,7 +208,7 @@ namespace snn
         }
     }
 
-    void Convolution::backward(Matrix_d& dout)
+    void Convolution::backward(const Matrix_d& dout)
     {
         Matrix_d dout_trans = this->dout_inverse_transform(dout);
         dFilter = input2col.transpose() * dout_trans;
@@ -237,7 +237,7 @@ namespace snn
         return result;
     }
 
-    Matrix_d Convolution::dout_inverse_transform(Matrix_d& dout)
+    Matrix_d Convolution::dout_inverse_transform(const Matrix_d& dout)
     {
         Matrix_d result(conv_output_raw.rows(), conv_output_raw.cols());
         for (int r = 0; r < dout.rows(); r++)

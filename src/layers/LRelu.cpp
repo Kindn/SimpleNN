@@ -26,12 +26,12 @@ namespace snn
         
     }
 
-    bool LRelu::set_properties(LayerParams& _layer_params)
+    bool LRelu::set_properties(const LayerParams& _layer_params)
     {
         if (_layer_params.size() <= 0)
             return true;
 
-        for (LayerParams::iterator iter = _layer_params.begin(); 
+        for (LayerParams::const_iterator iter = _layer_params.begin(); 
             iter != _layer_params.end(); iter++)
         {
             auto key = iter->first;
@@ -68,7 +68,7 @@ namespace snn
         output_data = leaky_relu(input_data, a);
     }
 
-    void LRelu::backward(Matrix_d& dout)
+    void LRelu::backward(const Matrix_d& dout)
     {
         din = zeros_like<double>(dout);
         for (int r = 0; r < din.rows(); r++)

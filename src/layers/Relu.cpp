@@ -26,7 +26,7 @@ namespace snn
         
     }
 
-    bool Relu::set_properties(LayerParams& _layer_params)
+    bool Relu::set_properties(const LayerParams& _layer_params)
     {
         if (_layer_params.size() <= 0)
             return true;
@@ -52,7 +52,7 @@ namespace snn
         output_data = relu(input_data);
     }
 
-    void Relu::backward(Matrix_d& dout)
+    void Relu::backward(const Matrix_d& dout)
     {
         din = zeros_like<double>(dout);
         for (int r = 0; r < din.rows(); r++)

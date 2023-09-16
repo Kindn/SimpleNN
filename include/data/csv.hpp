@@ -12,7 +12,7 @@
 #include <string>
 #include <fstream>
 
-void csv_seg_line(std::string& _line_str, 
+void csv_seg_line(const std::string& _line_str, 
                   std::vector<std::string>& _output_vec);
 
 #endif //_CSV_HPP_

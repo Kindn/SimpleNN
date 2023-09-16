@@ -74,7 +74,8 @@ namespace snn
             {
             case 0:
                 {
-                    pos = *(new std::vector<int>(rows));
+                    pos.resize(rows);
+                    pos.reserve(rows);
                     Matrix<Type> result(rows, 1);
                     for (int r = 0; r < rows; r++)
                     {
@@ -94,7 +95,8 @@ namespace snn
             
             case 1:
                 {
-                    pos = *(new std::vector<int>(cols));
+                    pos.resize(rows);
+                    pos.reserve(rows);
                     Matrix<Type> result(1, cols);
                     for (int c = 0; c < cols; c++)
                     {

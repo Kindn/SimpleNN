@@ -26,7 +26,7 @@ namespace snn
         
     }
 
-    bool Sigmoid::set_properties(LayerParams& _layer_params)
+    bool Sigmoid::set_properties(const LayerParams& _layer_params)
     {
         if (_layer_params.size() <= 0)
             return true;
@@ -52,9 +52,9 @@ namespace snn
         output_data = sigmoid(input_data);
     }
 
-    void Sigmoid::backward(Matrix_d& dout)
+    void Sigmoid::backward(const Matrix_d& dout)
     {
-        din = *(new Matrix_d(input_data.rows(), input_data.cols()));
+        din = zeros<double>(input_data.rows(), input_data.cols());
         for (int r = 0; r < din.rows(); r++)
         {
             for (int c = 0; c < din.cols(); c++)

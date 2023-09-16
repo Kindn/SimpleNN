@@ -16,7 +16,7 @@ namespace snn
         return;
     }                    
 
-    bool Softmax::set_properties(LayerParams& _layer_params)
+    bool Softmax::set_properties(const LayerParams& _layer_params)
     {
         if (_layer_params.size() <= 0)
             return true;
@@ -43,7 +43,7 @@ namespace snn
         output_data = softmax(input_data, 1);
     }
 
-    void Softmax::backward(Matrix_d& dout)
+    void Softmax::backward(const Matrix_d& dout)
     {
         din = zeros<double>(input_data.rows(), input_data.cols());
         for (int c = 0; c < output_data.cols(); c++)

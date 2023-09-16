@@ -13,7 +13,7 @@ namespace sjson
         private:
             std::stringstream msg;
         public:
-            JsonError(const std::string _description, 
+            JsonError(const std::string &_description, 
                       int _line, 
                       int _col, 
                       bool _print_pos = true)

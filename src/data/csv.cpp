@@ -7,7 +7,7 @@
 
 #include <data/csv.hpp>
 
-void csv_seg_line(std::string& _line_str, 
+void csv_seg_line(const std::string& _line_str, 
                   std::vector<std::string>& _output_vec)
 {
     int line_size = _line_str.length();

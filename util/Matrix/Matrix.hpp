@@ -53,6 +53,11 @@ class Matrix
         Matrix(const Type* array, int _rows, int _cols);
         ~Matrix() {delete [] data;};
 
+        static Matrix<Type> zeros(int rows, int cols)
+        {
+            return Matrix<Type>::Matrix(rows, cols);
+        }
+
         int rows() const {return this->theRows;}
         int cols() const {return this->theCols;}
         int size() const {return this->theRows * this->theCols;}
